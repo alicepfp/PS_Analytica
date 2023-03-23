@@ -1,0 +1,13 @@
+despesasfig = sns.FacetGrid(data=despesasbasicas, col='categoria', col_wrap=4, height=4, aspect=1)
+despesasfig.map_dataframe(sns.lineplot, x='mes', y='peso_mensal', hue='tabela', style='tabela',  markers=True, dashes=False)
+despesasfig.set(xticks=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
+plt.figure(figsize=(16,14))
+sns.lineplot(data=despesasbasicas, x='mes', y='peso_mensal', hue='categoria', style='tabela',  markers=True, dashes=False).set(xticks=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
+#gráfico para mostrar quanto de um salário mínimo é gasto com despesas básicas
+fig, ax1 = plt.subplots(figsize=(12,8))
+ax2 = ax1.twinx()
+ax2.grid(False)
+sns.barplot(data = porcentagemtotal, x='mes', y='sm_vigente', ax=ax1)
+sns.lineplot(data = porcentagemtotal, x='mes', y='sm_peso_botijao', hue='tabela', marker='o', sort = False, ax=ax2)
